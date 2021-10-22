@@ -6,7 +6,7 @@ import android.os.Parcelable;
 public class Hero implements Parcelable {
     private String name;
     private String description;
-    private Integer photo;
+    private String photo;
 
     public String getName() {
         return name;
@@ -24,11 +24,11 @@ public class Hero implements Parcelable {
         this.description = description;
     }
 
-    public Integer getPhoto() {
+    public String getPhoto() {
         return photo;
     }
 
-    public void setPhoto(Integer photo) {
+    public void setPhoto(String photo) {
         this.photo = photo;
     }
 
@@ -41,7 +41,7 @@ public class Hero implements Parcelable {
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeString(this.name);
         dest.writeString(this.description);
-        dest.writeInt(this.photo);
+        dest.writeString(this.photo);
     }
 
     Hero(){
@@ -51,7 +51,7 @@ public class Hero implements Parcelable {
     private Hero(Parcel in){
         this.name = in.readString();
         this.description = in.readString();
-        this.photo = in.readInt();
+        this.photo = in.readString();
     }
 
     public static final Parcelable.Creator<Hero> CREATOR = new Parcelable.Creator<Hero>() {
